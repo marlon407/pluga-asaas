@@ -1,0 +1,115 @@
+{
+    "name": {
+      "pt_BR": "Cria uma nova cobrança.",
+      "en": "Create a new payment"
+    },
+    "description": {
+      "pt_BR": "",
+      "en": ""
+    },
+    "action_fields": {
+      "fields": [
+        {
+          "key": "customer",
+          "name": {
+            "pt_BR": "Cliente",
+            "en": "Customer"
+          },
+          "description": {
+            "pt_BR": "Identificador único do cliente no ASAAS",
+            "en": "Asas customer unique identifier "
+          },
+          "field_type": "dropdown",
+          "data_type": "integer",
+          "required": true,
+          "visible": true,
+          "list": {
+            "type": "remote",
+            "helper_method": "customers"
+          }
+        },
+        {
+          "key": "billingType",
+          "name": {
+            "pt_BR": "Forma de pagamento",
+            "en": "Billing type"
+          },
+          "description": {
+            "pt_BR": "Forma de pagamento",
+            "en": "Billing type"
+          },
+          "field_type": "dropdown",
+          "data_type": "string",
+          "required": true,
+          "visible": true,
+          "list": {
+            "type": "local",
+            "data": [
+              {"label": "Boleto Bancário", "value": "BOLETO"},
+              {"label": "Cartão de Crédito", "value": "CREDIT_CARD"},
+              {"label": "Perguntar ao Cliente", "value": "UNDEFINED"}
+            ]
+          }
+        },
+        {
+          "key": "value",
+          "name": {
+            "pt_BR": "Valor",
+            "en": "Value"
+          },
+          "description": {
+            "pt_BR": "Valor da cobrança",
+            "en": "Payment value"
+          },
+          "field_type": "integer",
+          "data_type": "decimal",
+          "required": true,
+          "visible": true
+        },
+        {
+          "key": "dueDate",
+          "name": {
+            "pt_BR": "Data de vencimento",
+            "en": "Due date"
+          },
+          "description": {
+            "pt_BR": "Data de vencimento",
+            "en": "Due date"
+          },
+          "field_type": "string",
+          "data_type": "datetime",
+          "date_format": "'%Y-%m-%d'",
+          "required": true,
+          "visible": true
+        },
+        {
+          "key": "description",
+          "name": {
+            "pt_BR": "Descrição da cobrança",
+            "en": "Description"
+          },
+          "description": {
+            "pt_BR": "Descrição da cobrança",
+            "en": "Description"
+          },
+          "field_type": "string",
+          "required": false,
+          "visible": true
+        },
+        {
+          "key": "remoteIp",
+          "name": {
+            "pt_BR": "IP de onde o cliente está fazendo a compra. Não deve ser informado o IP do seu servidor",
+            "en": "Customer remote IP. It should not be your server IP"
+          },
+          "description": {
+            "pt_BR": "",
+            "en": ""
+          },
+          "field_type": "string",
+          "required": true,
+          "visible": false
+        }
+      ]
+    }
+  }

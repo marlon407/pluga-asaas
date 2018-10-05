@@ -1,0 +1,17 @@
+{
+    "name": "Customers",
+    "helper_method_key": "customers",
+    "requests": [
+      {
+        "method_name": "/customers",
+        "mapping": {
+          "label": {
+            "fields": ["name"]
+          },
+          "value": {
+            "field": "id"
+          }
+        }
+      }
+    ]
+  }
