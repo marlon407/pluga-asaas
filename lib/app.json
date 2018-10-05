@@ -14,7 +14,7 @@
 			"default": true
 		},
     "sandbox": {
-			"uri": "https://sandbox.asaas.com",
+			"uri": "https://sandbox.asaas.com/api/v3/",
 			"label": "Sandbox"
 		}
   },
