@@ -4,8 +4,8 @@
       "en": "Create customer"
     },
     "description": {
-      "pt_BR": "",
-      "en": ""
+      "pt_BR": "Criar cliente",
+      "en": "Create customer"
     },
     "action_fields": {
       "fields": [
@@ -19,7 +19,8 @@
             "pt_BR": "Nome do cliente",
             "en": "Customer name"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": true,
           "visible": true
         },
@@ -33,7 +34,8 @@
             "pt_BR": "CPF ou CNPJ do cliente",
             "en": "Customer CPF or CNPJ"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": true,
           "visible": true
         },
@@ -47,7 +49,8 @@
             "pt_BR": "Email do cliente",
             "en": "Customer Email"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -61,7 +64,8 @@
             "pt_BR": "Telefone celular",
             "en": "Mobile phone"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -75,7 +79,8 @@
             "pt_BR": "Logradouro do cliente",
             "en": "Customer Address"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -89,7 +94,8 @@
             "pt_BR": "Número do endereço",
             "en": "Address number"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -103,7 +109,8 @@
             "pt_BR": "Complemento do endereço",
             "en": "Address complement"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -117,7 +124,8 @@
             "pt_BR": "Bairro",
             "en": "Neighborhood"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -131,7 +139,8 @@
             "pt_BR": "Cep do endereço",
             "en": "Postal code"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         },
@@ -145,7 +154,8 @@
             "pt_BR": "Identificador do cliente no seu sistema",
             "en": "External reference"
           },
-          "field_type": "string",
+          "field_type": "custom",
+          "data_type": "string",
           "required": false,
           "visible": true
         }
