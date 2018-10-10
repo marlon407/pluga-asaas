@@ -4,20 +4,24 @@
       "en": "Create a new payment"
     },
     "description": {
-      "pt_BR": "",
-      "en": ""
+      "pt_BR": "Cria uma nova cobrança.",
+      "en": "Create a new payment"
     },
     "action_fields": {
       "fields": [
         {
           "key": "customer",
-          "name": {
+          "label": {
             "pt_BR": "Cliente",
             "en": "Customer"
           },
           "description": {
             "pt_BR": "Identificador único do cliente no ASAAS",
             "en": "Asas customer unique identifier "
+          },
+          "placeholder": {
+            "pt_BR": "Cliente",
+            "en": "Customer"
           },
           "field_type": "dropdown",
           "data_type": "integer",
@@ -30,11 +34,15 @@
         },
         {
           "key": "billingType",
-          "name": {
+          "label": {
             "pt_BR": "Forma de pagamento",
             "en": "Billing type"
           },
           "description": {
+            "pt_BR": "Forma de pagamento",
+            "en": "Billing type"
+          },
+          "placeholder": {
             "pt_BR": "Forma de pagamento",
             "en": "Billing type"
           },
