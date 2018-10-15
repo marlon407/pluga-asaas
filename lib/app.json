@@ -31,6 +31,9 @@
         "validations": [ ]
       }
     ],
-    "ping_request": { }
+    "ping_request":{
+      "method":"/customers",
+      "params":{ "limit":1 }
+    }
   }
 }
