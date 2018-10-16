@@ -1,9 +1,9 @@
 const plg = require('pluga-plg');
 const expect = require('chai').expect;
-const trigger = require('../../lib/triggers/payment_created');
+const trigger = require('../../lib/triggers/payment_overdue');
 
-describe('Trigger: payment created', () => {
-  it('Should get a list of new payments', (done) => {
+describe('Trigger: payment overdue', () => {
+  it('Should get a list of payments overdue', (done) => {
     const event = {
       meta:{
         lastReqAt: parseInt(process.env.LAST_REQ_AT),
