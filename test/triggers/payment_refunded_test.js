@@ -1,11 +1,12 @@
 const plg = require('pluga-plg');
 const expect = require('chai').expect;
-const trigger = require('../../lib/triggers/payment_received');
+const trigger = require('../../lib/triggers/payment_refunded');
 
-describe('Trigger: payment received', () => {
-  it('Should get a list of payment received', (done) => {
+describe('Trigger: payment refunded', () => {
+  it('Should get a list of refunded payments', (done) => {
     const event = {
       meta:{
+        lastReqAt: parseInt(process.env.LAST_REQ_AT),
         baseURI: process.env.BASE_URI
       },
       auth: {
@@ -17,7 +18,7 @@ describe('Trigger: payment received', () => {
       results.forEach((payment) => {
         expect(payment).to.have.property("id");
         expect(payment.customer).to.have.property("id");
-        expect(payment.status).to.be.oneOf(["RECEIVED", "RECEIVED_IN_CASH"]);
+        expect(payment.status).to.eq("REFUNDED");
       });
 
       done();

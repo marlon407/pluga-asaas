@@ -1,11 +1,11 @@
 {
     "name": {
-      "pt_BR": "Cobrança recebida",
-      "en": "Payment received"
+      "pt_BR": "Cobrança confirmada",
+      "en": "Payment confirmed"
     },
     "description": {
-      "pt_BR": "Cobrança recebida (Boleto ou em dinheiro)",
-      "en": "Payment received (Bank slip or in cash)"
+      "pt_BR": "Cobrança confirmada (Cartão de crédito)",
+      "en": "Payment overdue (Credit card)"
     },
     "trigger_fields": {
       "type": "local",

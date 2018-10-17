@@ -6,7 +6,6 @@ describe('Trigger: payment overdue', () => {
   it('Should get a list of payments overdue', (done) => {
     const event = {
       meta:{
-        lastReqAt: parseInt(process.env.LAST_REQ_AT),
         baseURI: process.env.BASE_URI
       },
       auth: {
@@ -18,6 +17,7 @@ describe('Trigger: payment overdue', () => {
       results.forEach((payment) => {
         expect(payment).to.have.property("id");
         expect(payment.customer).to.have.property("id");
+        expect(payment.status).to.eq("OVERDUE");
       });
 
       done();
