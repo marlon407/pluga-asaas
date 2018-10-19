@@ -4,7 +4,7 @@
       "en": "Payment created"
     },
     "description": {
-      "pt_BR": "Cobrança criada",
+      "pt_BR": "Geração de nova cobrança.",
       "en": "Payment created"
     },
     "trigger_type": "webhook",
@@ -14,7 +14,7 @@
       "event_filter": {
         "type": "body",
         "field": "event",
-        "events": ["PAYMENT_CREARED"]
+        "events": ["PAYMENT_CREATED"]
       }
     },
     "trigger_fields": {

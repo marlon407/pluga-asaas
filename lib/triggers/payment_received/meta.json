@@ -4,8 +4,8 @@
       "en": "Payment received"
     },
     "description": {
-      "pt_BR": "Cobrança recebida (Boleto ou em dinheiro)",
-      "en": "Payment received (Bank slip or in cash)"
+      "pt_BR": "Cobrança recebida",
+      "en": "Payment received"
     },
     "trigger_type": "webhook",
     "webhook": {
@@ -14,7 +14,7 @@
       "event_filter": {
         "type": "body",
         "field": "event",
-        "events": ["RECEIVED","RECEIVED_IN_CASH", "CONFIRMED"]
+        "events": ["PAYMENT_CONFIRMED","PAYMENT_RECEIVED"]
       }
     },
     "trigger_fields": {
