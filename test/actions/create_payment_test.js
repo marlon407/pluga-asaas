@@ -27,16 +27,15 @@ const event = {
       billingType: "BOLETO",
       dueDate: "2019-06-10",
       value: 100,
-      description: "Pedido 056984",
-      externalReference: "056984"
+      description: "Pedido 056984"
   }
 };
 
 describe('Action: Create payment', () => {
   it('Should create a new payment', function (done) {
-    action.handle(plg, event).then(result => {
-      expect(result).to.have.property("id");
-
+    action.handle(plg, event).then(payment => {
+      expect(payment).to.have.property("id");
+      expect(payment.description).to.eq("Pedido 056984");
       done();
     }).catch(done);
   });

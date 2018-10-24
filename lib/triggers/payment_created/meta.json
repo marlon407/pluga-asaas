@@ -1,0 +1,101 @@
+{
+    "name": {
+      "pt_BR": "Cobrança criada",
+      "en": "Payment created"
+    },
+    "description": {
+      "pt_BR": "Geração de nova cobrança.",
+      "en": "Payment created"
+    },
+
+    "configuration_fields": [{
+      "key": "email", "name": {"pt_BR": "Email", "en": "Email"},
+      "description": {"pt_BR": "Informe um email para receber notificações em caso de erros na fila.", "en": "Insert an email in order to receive notifications in case of any synchronization error"},
+      "required": true, "visible": true,
+      "field_type": "custom", "data_type": "string"
+    }],
+
+    "trigger_type":"rest_hook",
+    "webhook":{
+      "message_type": "object",
+      "field": "payment",
+      "event_filter": {
+        "type": "body",
+        "field": "event",
+        "events": ["PAYMENT_CREATED"]
+      },
+      "rest_hook_config":{
+        "create":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{
+            "apiVersion": 3,
+            "enabled": true,
+            "interrupted": false,
+            "email":"{email}"
+          }
+        },
+        "delete":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{ "enabled": false }
+        },
+        "meta_params":{
+          "webhook_id":"url",
+          "webhook_url":"url"
+        }
+      }
+    },
+
+    "trigger_fields": {
+      "type": "local",
+      "fields": [
+        {"key": "id", "name": {"pt_BR": "id", "en": "id"}, "description": {"pt_BR": "Identificador único da cobrança no ASAAS", "en": "Payment unique identification"}, "field_type": "string"},
+        {"key": "dateCreated", "name": {"pt_BR": "Data de criação da cobrança", "en": "Payment date created"}, "description": {"pt_BR": "Data de criação da cobrança", "en": "Payment date created"}, "field_type": "string"},
+        {"key": "dueDate", "name": {"pt_BR": "Data de vencimento da cobrança", "en": "Payment due date"}, "description": {"pt_BR": "Data de vencimento da cobrança", "en": "Payment due date"}, "field_type": "string"},
+        {"key": "originalDueDate", "name": {"pt_BR": "Data original de vencimento da cobrança", "en": "Payment original due date"}, "description": {"pt_BR": "Vencimento original no ato da criação da cobrança", "en": "Original due date when payment was created"}, "field_type": "string"},
+        {"key": "value", "name": {"pt_BR": "Valor da cobrança", "en": "Payment value"}, "description": {"pt_BR": "Valor da cobrança", "en": "Payment value"}, "field_type": "decimal"},
+        {"key": "netValue", "name": {"pt_BR": "Valor líquido da cobrança", "en": "Payment net value"}, "description": {"pt_BR": "Valor líquido da cobrança após desconto da tarifa do ASAAS", "en": "Payment value after discounted Asaas rate"}, "field_type": "decimal"},
+
+        {"key": "customer.id", "name": {"pt_BR": "Valor do disconto", "en": "Discount value"}, "description": {"pt_BR": "Valor percentual ou fixo de desconto a ser aplicado sobre o valor da cobrança", "en": "Discount value"}, "field_type": "decimal"},
+        { "key": "customer.name", "name": { "pt_BR": "Nome do cliente", "en": "Customer name" }, "description": { "pt_BR": "Nome do cliente", "en": "Customer name" }, "field_type": "string" },
+        { "key": "customer.cpfCnpj", "name": { "pt_BR": "CPF ou CNPJ do cliente", "en": "Customer CPF or CNPJ" }, "description": { "pt_BR": "CPF ou CNPJ do cliente", "en": "Customer CPF or CNPJ" }, "field_type": "string" },
+        { "key": "customer.email", "name": { "pt_BR": "Email do cliente", "en": "Customer Email" }, "description": { "pt_BR": "Email do cliente", "en": "Customer Email" }, "field_type": "string" },
+        { "key": "customer.mobilePhone", "name": { "pt_BR": "Telefone celular do cliente", "en": "Customer mobile phone" }, "description": { "pt_BR": "Telefone celular do cliente", "en": "Customer mobile phone" }, "field_type": "string" },
+        { "key": "customer.address", "name": { "pt_BR": "Logradouro do cliente", "en": "Customer Address" }, "description": { "pt_BR": "Logradouro do cliente", "en": "Customer Address" }, "field_type": "string" },
+        { "key": "customer.addressNumber", "name": { "pt_BR": "Número do endereço", "en": "Address number" }, "description": { "pt_BR": "Número do endereço", "en": "Address number" }, "field_type": "string" },
+        { "key": "customer.complement", "name": { "pt_BR": "Complemento do endereço", "en": "Address complement" }, "description": { "pt_BR": "Complemento do endereço", "en": "Address complement" }, "field_type": "string" },
+        { "key": "customer.province", "name": { "pt_BR": "Bairro", "en": "Neighborhood" }, "description": { "pt_BR": "Bairro", "en": "Neighborhood" }, "field_type": "string" },
+        { "key": "customer.postalCode", "name": { "pt_BR": "Cep do endereço do cliente", "en": "Customer postal code" }, "description": { "pt_BR": "Cep do endereço do cliente", "en": "Customer postal code" }, "field_type": "string" },
+
+        {"key": "discount.value", "name": {"pt_BR": "Valor do disconto", "en": "Discount value"}, "description": {"pt_BR": "Valor percentual ou fixo de desconto a ser aplicado sobre o valor da cobrança", "en": "Discount value"}, "field_type": "decimal"},
+        {"key": "discount.dueDateLimitDays", "name": {"pt_BR": "Dias antes do vencimento para aplicar desconto", "en": "Discount due date limit days"}, "description": {"pt_BR": "Dias antes do vencimento para aplicar desconto. Ex: 0 = até o vencimento, 1 = até um dia antes, 2 = até dois dias antes, e assim por diante", "en": "Discount due date limit days"}, "field_type": "integer"},
+        {"key": "discount.type", "name": {"pt_BR": "Tipo de desconto", "en": "Discount type"}, "description": {"pt_BR": "Tipo de desconto", "en": "Discount type"}, "field_type": "string"},
+        
+        {"key": "interest.value", "name": {"pt_BR": "Percentual do juros", "en": "Interest value"}, "description": {"pt_BR": "Percentual de juros ao mês sobre o valor da cobrança para pagamento após o vencimento", "en": "Interest value"}, "field_type": "decimal"},
+        {"key": "fine.value", "name": {"pt_BR": "Percentual de multa", "en": "Interest value"}, "description": {"pt_BR": "Percentual de multa sobre o valor da cobrança para pagamento após o vencimento", "en": "Fine value"}, "field_type": "decimal"},
+        
+        {"key": "billingType", "name": {"pt_BR": "Forma de pagamento", "en": "Billing type"}, "description": {"pt_BR": "Forma de pagamento", "en": "Billing type"}, "field_type": "string"},
+        {"key": "status", "name": {"pt_BR": "Status", "en": "Status"}, "description": {"pt_BR": "Status", "en": "Status"}, "field_type": "string"},
+        {"key": "description", "name": {"pt_BR": "Descrição da cobrança", "en": "Payment description"}, "description": {"pt_BR": "Descrição da cobrança", "en": "Payment description"}, "field_type": "string"},
+        
+        {"key": "originalValue", "name": {"pt_BR": "Valor original da cobrança", "en": "Payment original value"}, "description": {"pt_BR": "Valor original da cobrança (preenchido quando paga com juros e multa)", "en": "Payment original value"}, "field_type": "decimal"},
+        {"key": "interestValue", "name": {"pt_BR": "Valor calculado de juros e multa que deve ser pago após o vencimento da cobrança", "en": "Calculated interest value"}, "description": {"pt_BR": "Valor calculado de juros e multa que deve ser pago após o vencimento da cobrança", "en": "Calculated interest value"}, "field_type": "decimal"},
+        
+        {"key": "lastInvoiceViewedDate", "name": {"pt_BR": "Data da última vizualização da fatura", "en": "Invoice last viewed date"}, "description": {"pt_BR": "Data da última vizualização da fatura", "en": "Invoice last viewed date"}, "field_type": "string"},
+        {"key": "lastBankSlipViewedDate", "name": {"pt_BR": "Data da última vizualização do boleto", "en": "Bank slip last viewed date"}, "description": {"pt_BR": "Data da última vizualização do boleto", "en": "Bank slip last viewed date"}, "field_type": "string"},
+        
+        {"key": "confirmedDate", "name": {"pt_BR": "Data de confirmação da cobrança (Somente para cartão de crédito)", "en": "Payment confirmed date (Valid only for credit card)"}, "description": {"pt_BR": "Data de confirmação da cobrança (Somente para cartão de crédito)", "en": "Payment confirmed date (Valid only for credit card)"}, "field_type": "string"},
+        {"key": "paymentDate", "name": {"pt_BR": "Data de liquidação da cobrança no ASAAS", "en": "Asaas payment date"}, "description": {"pt_BR": "Data de liquidação da cobrança no ASAAS", "en": "Asaas payment date"}, "field_type": "string"},
+        {"key": "clientPaymentDate", "name": {"pt_BR": "Data em que o cliente efetuou o pagamento do boleto", "en": "Customer payment date"}, "description": {"pt_BR": "Data em que o cliente efetuou o pagamento do boleto", "en": "Customer payment date"}, "field_type": "string"},
+        
+        {"key": "invoiceUrl", "name": {"pt_BR": "URL da fatura", "en": "Invoice URL"}, "description": {"pt_BR": "URL da fatura", "en": "Invoice URL"}, "field_type": "string"},
+        {"key": "invoiceNumber", "name": {"pt_BR": "Número da fatura", "en": "Invoice number"}, "description": {"pt_BR": "Número da fatura", "en": "Invoice number"}, "field_type": "string"},
+        {"key": "bankSlipUrl", "name": {"pt_BR": "URL para download do boleto", "en": "Bank slip URL"}, "description": {"pt_BR": "URL para download do boleto", "en": "Bank slip URL"}, "field_type": "string"},
+        
+        {"key": "deleted", "name": {"pt_BR": "Cobrança removida", "en": "Payment deleted"}, "description": {"pt_BR": "true quando a cobrança estiver excluída ", "en": "true when payment is deleted"}, "field_type": "string"}
+        
+      ]
+    }
+  }
+  
