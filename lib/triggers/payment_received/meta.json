@@ -7,16 +7,39 @@
       "pt_BR": "Cobrança recebida",
       "en": "Payment received"
     },
-    "trigger_type": "webhook",
-    "webhook": {
+
+    "trigger_type":"rest_hook",
+    "webhook":{
       "message_type": "object",
       "field": "payment",
       "event_filter": {
         "type": "body",
         "field": "event",
         "events": ["PAYMENT_CONFIRMED","PAYMENT_RECEIVED"]
+      },
+      "rest_hook_config":{
+        "create":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{
+            "apiVersion": 3,
+            "enabled": true,
+            "interrupted": false,
+            "email":"{email}"
+          }
+        },
+        "delete":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{ "enabled": false }
+        },
+        "meta_params":{
+          "webhook_id":"url",
+          "webhook_url":"url"
+        }
       }
     },
+
     "trigger_fields": {
       "type": "local",
       "fields": [

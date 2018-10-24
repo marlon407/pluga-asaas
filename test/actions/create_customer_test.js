@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const action = require('../../lib/actions/create_customer');
 require('dotenv').config()
 
-const event = {
+let event = {
   meta:{
     baseURI: process.env.BASE_URI
   },
@@ -29,14 +29,17 @@ describe('Action: Create customer', () => {
   it('Should create a new customer', function (done) {
     action.handle(plg, event).then(result => {
       expect(result).to.have.property("id");
+      expect(result.phone).to.eq("4738010919");
 
       done();
     }).catch(done);
   });
 
   it('Should update a customer', function (done) {
+    event.input.phone = "4738010918";
     action.handle(plg, event).then(result => {
       expect(result).to.have.property("id");
+      expect(result.phone).to.eq("4738010918");
 
       done();
     }).catch(done);

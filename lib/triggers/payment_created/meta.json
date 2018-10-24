@@ -7,16 +7,48 @@
       "pt_BR": "Geração de nova cobrança.",
       "en": "Payment created"
     },
-    "trigger_type": "webhook",
-    "webhook": {
+
+    "configuration_fields": [{
+      "key": "email", "name": {"pt_BR": "Email", "en": "Email"},
+      "label": {"pt_BR": "Email", "en": "Email"},
+      "placeholder": {"pt_BR": "Informe um email para receber notificações em caso de erros na fila", "en": "Insert an email in order to receive notifications in case of any synchronization errro"},
+      "description": {"pt_BR": "Informe um email para receber notificações em caso de erros na fila.", "en": "Insert an email in order to receive notifications in case of any synchronization errro"},
+      "required": true, "visible": true,
+      "field_type": "custom", "data_type": "string"
+    }],
+
+    "trigger_type":"rest_hook",
+    "webhook":{
       "message_type": "object",
       "field": "payment",
       "event_filter": {
         "type": "body",
         "field": "event",
         "events": ["PAYMENT_CREATED"]
+      },
+      "rest_hook_config":{
+        "create":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{
+            "apiVersion": 3,
+            "enabled": true,
+            "interrupted": false,
+            "email":"{email}"
+          }
+        },
+        "delete":{
+          "verb":"POST",
+          "method_name":"/webhook",
+          "params":{ "enabled": false }
+        },
+        "meta_params":{
+          "webhook_id":"url",
+          "webhook_url":"url"
+        }
       }
     },
+
     "trigger_fields": {
       "type": "local",
       "fields": [
