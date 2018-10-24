@@ -8,6 +8,13 @@
       "en": "Payment refunded"
     },
 
+    "configuration_fields": [{
+      "key": "email", "name": {"pt_BR": "Email", "en": "Email"},
+      "description": {"pt_BR": "Informe um email para receber notificações em caso de erros na fila.", "en": "Insert an email in order to receive notifications in case of any synchronization errro"},
+      "required": true, "visible": true,
+      "field_type": "custom", "data_type": "string"
+    }],
+
     "trigger_type":"rest_hook",
     "webhook":{
       "message_type": "object",
