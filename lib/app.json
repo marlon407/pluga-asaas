@@ -28,7 +28,7 @@
         "mapping": "access_token",
         "prefix": "",
         "type": "text",
-        "validations": [ ]
+        "validations": []
       }
     ],
     "ping_request":{
