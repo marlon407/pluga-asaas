@@ -23,9 +23,9 @@
     "type": "pass_through_header",
     "fields": [
       {
-        "name": "api_key",
+        "name": "access_token",
         "label": "Chave de acesso à API Asaas",
-        "mapping": "api_key",
+        "mapping": "access_token",
         "prefix": "",
         "type": "text",
         "validations": []
