@@ -8,7 +8,7 @@ let event = {
     baseURI: process.env.BASE_URI
   },
   auth: {
-    api_key: process.env.api_key
+    api_key: process.env.API_KEY
   },
   input:{
     name: "Marcelo Almeida",
