@@ -10,12 +10,12 @@
   "signup_url": "https://www.asaas.com/account/create",
   "api_base_uri": {
     "production": {
-      "uri": "https://www.asaas.com/api/v3/",
+      "uri": "https://www.asaas.com/api/v3",
       "label": "Produção",
       "default": true
     },
     "sandbox": {
-      "uri": "https://sandbox.asaas.com/api/v3/",
+      "uri": "https://sandbox.asaas.com/api/v3",
       "label": "Sandbox"
     }
   },
@@ -23,17 +23,17 @@
     "type": "pass_through_header",
     "fields": [
       {
-        "name": "access_token",
+        "name": "api_key",
         "label": "Chave de acesso à API Asaas",
         "mapping": "access_token",
         "prefix": "",
         "type": "text",
-        "validations": [ ]
+        "validations": []
       }
     ],
     "ping_request":{
-      "method":"/customers",
-      "params":{ "limit":1 }
+      "method": "/customers",
+      "params": { "limit":1 }
     }
   }
 }

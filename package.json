@@ -7,7 +7,7 @@
     "node": "8.10"
   },
   "dependencies": {
-    "pluga-plg": "0.0.2"
+    "pluga-plg": "0.0.1"
   },
   "devDependencies": {
     "axios-debug": "0.0.4",
