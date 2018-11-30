@@ -16,6 +16,7 @@
       "field": "event",
       "events": ["PAYMENT_OVERDUE"]
     },
+    "singleton": true,
     "rest_hook_config": {
       "create": {
         "verb": "POST",
@@ -27,13 +28,13 @@
           "email": "tech@pluga.co"
         }
       },
-      "delete": {
-        "verb": "POST",
-        "method_name": "/webhook",
-        "params": {
-          "enabled": false
-        }
-      },
+      // "delete": {
+      //   "verb": "POST",
+      //   "method_name": "/webhook",
+      //   "params": {
+      //     "enabled": false
+      //   }
+      // },
       "meta_params": {
         "webhook_id": "url",
         "webhook_url": "url"
@@ -92,7 +93,7 @@
       {"key": "invoiceUrl", "name": {"pt_BR": "URL da fatura", "en": "Invoice URL"}, "description": {"pt_BR": "URL da fatura", "en": "Invoice URL"}, "field_type": "string"},
       {"key": "invoiceNumber", "name": {"pt_BR": "Número da fatura", "en": "Invoice number"}, "description": {"pt_BR": "Número da fatura", "en": "Invoice number"}, "field_type": "string"},
       {"key": "bankSlipUrl", "name": {"pt_BR": "URL para download do boleto", "en": "Bank slip URL"}, "description": {"pt_BR": "URL para download do boleto", "en": "Bank slip URL"}, "field_type": "string"},
-      
+
       {"key": "asaasFee", "name": {"pt_BR": "Taxa de emissão de cobrança", "en": "Payment creation fee"}, "description": {"pt_BR": "Taxa de emissão de cobrança ", "en": "Payment creation fee"}, "field_type": "decimal"},
       {"key": "deleted", "name": {"pt_BR": "Cobrança removida", "en": "Payment deleted"}, "description": {"pt_BR": "true quando a cobrança estiver excluída ", "en": "true when payment is deleted"}, "field_type": "string"}
     ]
