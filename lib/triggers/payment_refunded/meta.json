@@ -16,6 +16,7 @@
       "field": "event",
       "events": ["PAYMENT_REFUNDED"]
     },
+    "singleton": true,
     "rest_hook_config": {
       "create": {
         "verb": "POST",
@@ -27,13 +28,13 @@
           "email": "tech@pluga.co"
         }
       },
-      "delete": {
-        "verb": "POST",
-        "method_name": "/webhook",
-        "params": {
-          "enabled": false
-        }
-      },
+      // "delete": {
+      //   "verb": "POST",
+      //   "method_name": "/webhook",
+      //   "params": {
+      //     "enabled": false
+      //   }
+      // },
       "meta_params": {
         "webhook_id": "url",
         "webhook_url": "url"
