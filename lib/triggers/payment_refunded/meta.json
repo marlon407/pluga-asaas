@@ -21,12 +21,7 @@
       "create": {
         "verb": "POST",
         "method_name": "/webhook",
-        "params": {
-          "apiVersion": 3,
-          "enabled": true,
-          "interrupted": false,
-          "email": "tech@pluga.co"
-        }
+        "params": { }
       },
       // "delete": {
       //   "verb": "POST",
