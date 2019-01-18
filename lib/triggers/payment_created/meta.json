@@ -20,7 +20,7 @@
     "rest_hook_config": {
       "create": {
         "verb": "POST",
-        "method_name": "/webhook",
+        "method_name": "/webhook/pluga",
         "params": { }
       },
       // "delete": {
